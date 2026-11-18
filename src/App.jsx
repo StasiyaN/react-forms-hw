@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import RenderCounter from "./RenderCounter.jsx";
 
 function App() {
   const [name, setName] = useState('')
@@ -24,6 +25,9 @@ function App() {
   }
 
   return (
+      <>
+        <RenderCounter />
+
       <form onSubmit={handleSubmit} noValidate>
         <div>
           <label htmlFor="name">Имя</label>
@@ -49,7 +53,11 @@ function App() {
 
         <button type="submit">Отправить</button>
       </form>
+        </>
+
   )
 }
+
+
 
 export default App
