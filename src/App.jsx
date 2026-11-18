@@ -1,10 +1,16 @@
-import { useState } from 'react'
+import {useEffect, useRef, useState} from 'react'
 import RenderCounter from "./RenderCounter.jsx";
+import CustomButton from "./CustomButton.jsx";
 
 function App() {
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState({})
+  const buttonRef = useRef(null)
+
+  useEffect(() => {
+    buttonRef.current.focus()
+  },[])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -51,9 +57,12 @@ function App() {
           {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
         </div>
 
-        <button type="submit">Отправить</button>
+        <CustomButton ref={buttonRef} type="submit">
+          Отправить
+        </CustomButton>
+
       </form>
-        </>
+      </>
 
   )
 }
